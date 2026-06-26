@@ -1,0 +1,77 @@
+name: 'dbt_cicd_project'
+version: '1.0'
+config-version: 2
+
+profile: 'dbt_cicd_project'
+
+
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - target
+  - dbt_packages
+
+models:
+  dbt_project:
+
+    bronze:
+      +database: BRONZE
+      +materialized: table
+
+      crm_bronze:
+        +schema: CRM_BRONZE
+
+      erp_bronze:
+        +schema: ERP_BRONZE
+
+    silver:
+      +database: SILVER
+      +materialized: table
+
+      crm_dv:
+        +schema: CRM_DV
+
+      erp_dv:
+        +schema: ERP_DV
+
+      sales_dv:
+        +schema: SALES_DV
+
+      bv_rules:
+        +schema: BV_RULES
+
+      bv_pit:
+        +schema: BV_PIT
+
+      bv_bridge:
+        +schema: BV_BRIDGE
+
+      bv_derived:
+        +schema: BV_DERIVED
+
+    gold:
+      +database: GOLD
+      +materialized: table
+
+      dimensions:
+        +schema: DIMENSIONS
+
+      facts:
+        +schema: FACTS
+
+      mart_customer:
+        +schema: MART_CUSTOMER
+
+      mart_product:
+        +schema: MART_PRODUCT
+
+      mart_sales:
+        +schema: MART_SALES
+
+      semantic:
+        +schema: SEMANTIC

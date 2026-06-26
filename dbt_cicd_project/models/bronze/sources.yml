@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: crm_raw
+    database: '{{ target.database }}'
+    schema: CRM_RAW
+
+    tables:
+      - name: cust_info

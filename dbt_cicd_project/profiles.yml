@@ -1,0 +1,48 @@
+dbt_cicd_project:
+  outputs:
+
+    dev:
+      type: snowflake
+      account: XISZDJO-OV58201
+      user: SVC_TRANSFORM_DEV
+      role: SVC_TRANSFORM_DEV
+      private_key_path: 'C:/Users/sasan/Desktop/snowflake/New folder/SVC_TRANSFORM_DEV_NEW.p8'
+      warehouse: DEV_TRANSFORM_WH
+      database: DEV_RAW_DB
+      schema: CRM_RAW
+      threads: 4
+
+    ci:
+      type: snowflake
+      account: XISZDJO-OV58201
+      user: SVC_CICD
+      role: SVC_CICD_ROLE
+      private_key_path: 'C:/Users/sasan/Desktop/snowflake/New folder/rsa_key_ci.p8'
+      warehouse: CICD_WH
+      database: CI_RAW_DB
+      schema: CRM_RAW
+      threads: 4
+
+    qa:
+      type: snowflake
+      account: XISZDJO-OV58201
+      user: SVC_TRANSFORM_QA
+      role: SVC_TRANSFORM_QA
+      private_key_path:  'C:/Users/sasan/Desktop/snowflake/New folder/rsa_key_qa.p8'
+      warehouse: QA_TRANSFORM_WH
+      database: QA_RAW_DB
+      schema: CRM_RAW
+      threads: 4
+
+    prod:
+      type: snowflake
+      account: XISZDJO-OV58201
+      user: SVC_TRANSFORM_PROD
+      role: SVC_TRANSFORM_PROD
+      private_key_path: 'C:/Users/sasan/Desktop/snowflake/New folder/rsa_key.p8'
+      warehouse: PROD_TRANSFORM_WH
+      database: PROD_RAW_DB
+      schema: CRM_RAW
+      threads: 8
+
+  target: dev
